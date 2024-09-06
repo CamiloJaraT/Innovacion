@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Usuario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PYME Manager - Portal</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="portal-content">
+        <h1>Bienvenido, <span id="nombre-usuario"></span></h1>
+        <div class="financial-data">
+            <p><strong>Deuda:</strong> $<span id="deuda-usuario"></span></p>
+            <p><strong>Ganancias:</strong> $<span id="ganancias-usuario"></span></p>
+        </div>
+    </section>
+
+    <script src="portal.js"></script>
+</body>
+</html>
