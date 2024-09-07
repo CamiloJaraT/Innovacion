@@ -22,10 +22,38 @@ if (usuarioActivo) {
     window.location.href = "index.html";
 }
 
+// Obtener elementos del modal
+const modal = document.getElementById('modal-confirmacion');
+const mensajeModal = document.getElementById('mensaje-modal');
+const cerrarModalBtn = document.getElementById('cerrar-modal-btn');
+const closeBtn = document.querySelector('.close-btn');
+
+// Función para mostrar el modal con un mensaje
+function mostrarModal(mensaje) {
+    mensajeModal.textContent = mensaje;
+    modal.style.display = 'flex';
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+    modal.style.display = 'none';
+}
+
+// Cerrar el modal al hacer clic en el botón "Aceptar" o en la "X"
+cerrarModalBtn.addEventListener('click', cerrarModal);
+closeBtn.addEventListener('click', cerrarModal);
+
+// Cerrar el modal si el usuario hace clic fuera del contenido del modal
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        cerrarModal();
+    }
+});
+
 // Manejar facturación con validaciones
 const facturaForm = document.getElementById('form-factura');
-let facturas = JSON.parse(localStorage.getItem('facturas')) || [];
-let facturaId = facturas.length + 1;
+const facturasTable = document.getElementById('facturas-table').getElementsByTagName('tbody')[0];
+let facturaId = 1;
 
 facturaForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -34,21 +62,36 @@ facturaForm.addEventListener('submit', (e) => {
     const montoFactura = parseFloat(document.getElementById('monto-factura').value);
     const fechaFactura = document.getElementById('fecha-factura').value;
 
+    const advertenciaDeudaVisible = document.getElementById('advertencia-deuda').style.display === 'block';
+
+    if (advertenciaDeudaVisible) {
+        alert('No puedes generar una factura mientras tu deuda sea mayor que tus ganancias.');
+        return; // No permitir la generación de la factura
+    }
+
     if (cliente && montoFactura > 0) {
-        // Crear objeto de factura
-        const nuevaFactura = {
-            id: facturaId,
-            cliente: cliente,
-            total: montoFactura.toFixed(2),
-            fecha: fechaFactura
-        };
+        const newRow = facturasTable.insertRow();
+        newRow.innerHTML = `
+            <td>Factura ${facturaId}</td>
+            <td>${cliente}</td>
+            <td>${montoFactura.toFixed(2)}</td>
+            <td>${fechaFactura}</td>
+            <td><button onclick="exportarPDF(${facturaId}, '${cliente}', '${montoFactura}', '${fechaFactura}')">Exportar a PDF</button></td>
+        `;
 
-        // Guardar factura en localStorage
-        facturas.push(nuevaFactura);
-        localStorage.setItem('facturas', JSON.stringify(facturas));
+        // Actualizar ganancias
+        let gananciasTotales = parseFloat(usuarioActivo.ganancias || 0);
+        gananciasTotales += montoFactura;
+        usuarioActivo.ganancias = gananciasTotales;
 
-        // Redirigir a la página de facturas
-        window.location.href = 'facturas.html';
+        document.getElementById('ganancias-usuario').textContent = gananciasTotales.toFixed(2);
+
+        // Guardar en localStorage
+        localStorage.setItem('usuarioActivo', JSON.stringify(usuarioActivo));
+
+        facturaId++;
+        facturaForm.reset();
+        mostrarModal('La factura ha sido generada con éxito.');
     } else {
         alert('Por favor, ingrese un cliente válido y un monto mayor a 0.');
     }
