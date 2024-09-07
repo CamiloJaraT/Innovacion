@@ -1,32 +1,37 @@
+/* Reset de márgenes y padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos del cuerpo */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
 }
 
+/* Encabezado */
 header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
+    background-color: #333;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #fff;
 }
 
 .nav-links {
@@ -42,76 +47,301 @@ nav {
     color: #fff;
     text-decoration: none;
     font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
+.nav-links a:hover {
+    background-color: #555;
+}
+
+/* Sección Hero */
 .hero {
     background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 80vh;
-    color: #fff;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #fff;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease-out;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
+.hero p {
+    font-size: 1.4rem;
     margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-btn {
     background-color: #ff6f61;
     color: #fff;
     padding: 0.75rem 2rem;
+    font-size: 1.3rem;
     text-decoration: none;
-    font-size: 1.2rem;
     border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.cta-btn:hover {
+    background-color: #e65a50;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animación para la sección Hero */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sección de Funcionalidades */
 .features {
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
+    background-color: #fff;
     text-align: center;
 }
 
 .features h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    text-transform: uppercase;
 }
 
 .feature-cards {
     display: flex;
     justify-content: space-around;
-    margin: 0 auto;
-    max-width: 1200px;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .card {
     background: #fff;
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
     width: 30%;
+    min-width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
+    color: #333;
 }
 
 .card p {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    color: #555;
 }
 
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff6f61;
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #e65a50;
+}
+
+/* Sección del portal */
+/* Contenedor del portal */
+.portal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+/* Contenido del portal */
+.portal-content {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 800px; /* Ajuste para que las tarjetas tengan más espacio */
+    width: 100%;
+}
+
+/* Estilo del título */
+.portal-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Contenedor de datos financieros */
+.financial-data {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que las tarjetas se adapten en pantallas pequeñas */
+    gap: 2rem; /* Espacio entre las tarjetas */
+}
+
+/* Tarjetas de datos financieros */
+.financial-card {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: calc(50% - 1rem); /* Ajuste para que las tarjetas se alineen y tengan buen espacio */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.financial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de cada tarjeta */
+.financial-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Estilo de los valores (deuda y ganancias) */
+.amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Clases para cambiar el color de los valores */
+.amount.green {
+    color: #27ae60; /* Verde si las ganancias son mayores */
+}
+
+.amount.red {
+    color: #e74c3c; /* Rojo si la deuda es mayor */
+}
+
+/* Estilo para la advertencia */
+.warning {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Estilo del botón de cerrar sesión */
+.logout-btn {
+    background-color: #c0392b;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e74c3c;
+}
+
+/* Pie de página */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .social-media {
@@ -122,112 +352,10 @@ footer {
     color: #fff;
     margin: 0 1rem;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.social-media a:hover {
+    text-decoration: underline;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-}
-
-/* Hero Section */
-.hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 80vh;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.cta-btn {
-    background-color: #ff6f61;
-    color: #fff;
-    padding: 0.75rem 2rem;
-    text-decoration: none;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
-
-.cta-btn:hover {
-    background-color: #e65a50;
-}
-
-/* Modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-}
-
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-content h2 {
-    margin-bottom: 1.5rem;
-}
-
-.modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.modal-content input {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.modal-content button {
-    padding: 0.75rem;
-    font-size: 1.2rem;
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal-content button:hover {
-    background-color: #e65a50;
-}
