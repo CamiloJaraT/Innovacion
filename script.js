@@ -4,15 +4,19 @@ const openBtn = document.getElementById("comenzar-btn");
 const closeBtn = document.querySelector(".close-btn");
 
 // Abrir el modal cuando se haga clic en el botón "Comenzar Ahora"
-openBtn.addEventListener("click", function(event) {
-    event.preventDefault(); // Previene la recarga de la página
-    modal.style.display = "block"; // Muestra el modal
-});
+if (openBtn) {
+    openBtn.addEventListener("click", function(event) {
+        event.preventDefault(); // Previene la recarga de la página
+        modal.style.display = "block"; // Muestra el modal
+    });
+}
 
 // Cerrar el modal cuando se haga clic en el botón "x"
-closeBtn.addEventListener("click", function() {
-    modal.style.display = "none"; // Oculta el modal
-});
+if (closeBtn) {
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none"; // Oculta el modal
+    });
+}
 
 // Cerrar el modal cuando se haga clic fuera del contenido del modal
 window.addEventListener("click", function(event) {
@@ -45,28 +49,54 @@ function crearUsuariosPrueba() {
 
 // Ejecutar la función al cargar la página
 crearUsuariosPrueba();
+
 // Obtener elementos del DOM
 const loginForm = document.getElementById("login-form");
 
 // Verificar credenciales y redirigir al portal
-loginForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Previene el envío del formulario
+if (loginForm) {
+    loginForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Previene el envío del formulario
 
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
 
-    const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+        const usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
-    // Buscar al usuario en el almacenamiento local
-    const usuarioEncontrado = usuarios.find(user => user.email === email && user.password === password);
+        // Buscar al usuario en el almacenamiento local
+        const usuarioEncontrado = usuarios.find(user => user.email === email && user.password === password);
 
-    if (usuarioEncontrado) {
-        // Guardar el usuario activo en localStorage
-        localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+        if (usuarioEncontrado) {
+            // Guardar el usuario activo en localStorage
+            localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
 
-        // Redirigir al portal
-        window.location.href = "portal.html";
-    } else {
-        alert("Correo o contraseña incorrectos.");
+            // Redirigir al portal
+            window.location.href = "portal.html";
+        } else {
+            alert("Correo o contraseña incorrectos.");
+        }
+    });
+}
+
+// Obtener el botón de cerrar sesión
+const logoutBtn = document.getElementById("logout-btn");
+
+// Evento para cerrar sesión
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", function() {
+        // Eliminar el usuario activo del localStorage
+        localStorage.removeItem('usuarioActivo');
+        // Redirigir a la página de inicio de sesión o principal
+        window.location.href = "index.html";
+    });
+}
+
+// Al cargar la página, verificar si hay un usuario activo
+window.addEventListener("load", function() {
+    const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+    if (!usuarioActivo) {
+        // Si no hay un usuario activo, redirigir a la página de inicio de sesión
+        window.location.href = "index.html";
     }
 });
