@@ -20,36 +20,80 @@
         <section class="portal-content">
             <h1>Bienvenido, <span id="nombre-usuario"></span></h1>
 
-            <!-- Datos financieros principales -->
-            <div class="financial-data">
-                <div class="financial-card">
-                    <h2>Deuda Total</h2>
-                    <p class="amount red" id="deuda-usuario">$0.00</p>
+            <!-- Sección de resumen financiero -->
+            <section class="financial-summary">
+                <div class="financial-data">
+                    <div class="financial-card">
+                        <h2>Deuda Total</h2>
+                        <p class="amount red" id="deuda-usuario">$0.00</p>
+                    </div>
+                    <div class="financial-card">
+                        <h2>Ganancias Totales</h2>
+                        <p class="amount green" id="ganancias-usuario">$0.00</p>
+                    </div>
+                    <div class="financial-card">
+                        <h2>Gastos Totales</h2>
+                        <p class="amount orange" id="gastos-usuario">$0.00</p>
+                    </div>
                 </div>
-                <div class="financial-card">
-                    <h2>Ganancias Totales</h2>
-                    <p class="amount green" id="ganancias-usuario">$0.00</p>
-                </div>
-            </div>
 
-            <!-- Nueva sección: Generar Facturas -->
+                <!-- Advertencia de deuda -->
+                <div id="advertencia-deuda" class="warning" style="display: none;">
+                    ¡Advertencia! Tu deuda es mayor que tus ganancias.
+                </div>
+            </section>
+
+            <!-- Sección de generación de facturas -->
             <section class="factura-container">
                 <h2>Generar Factura</h2>
                 <form id="form-factura">
-                    <label for="nombre-cliente">Nombre del Cliente:</label>
-                    <input type="text" id="nombre-cliente" name="nombre-cliente" required>
+                    <div class="form-group">
+                        <label for="nombre-cliente">Nombre del Cliente:</label>
+                        <input type="text" id="nombre-cliente" name="nombre-cliente" required>
+                    </div>
 
-                    <label for="monto-factura">Monto de la Factura:</label>
-                    <input type="number" id="monto-factura" name="monto-factura" required>
+                    <div class="form-group">
+                        <label for="monto-factura">Monto de la Factura:</label>
+                        <input type="number" id="monto-factura" name="monto-factura" required>
+                    </div>
 
-                    <label for="fecha-factura">Fecha de la Factura:</label>
-                    <input type="date" id="fecha-factura" name="fecha-factura" required>
+                    <div class="form-group">
+                        <label for="fecha-factura">Fecha de la Factura:</label>
+                        <input type="date" id="fecha-factura" name="fecha-factura" required>
+                    </div>
 
                     <button type="submit" class="cta-btn">Generar Factura</button>
                 </form>
             </section>
-        </section>
+
+            <!-- Sección de registro de gastos -->
+            <section class="gasto-container">
+                <h2>Registrar Gasto</h2>
+                <form id="form-gasto">
+                    <div class="form-group">
+                        <label for="monto-gasto">Monto del Gasto:</label>
+                        <input type="number" id="monto-gasto" name="monto-gasto" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion-gasto">Descripción:</label>
+                        <input type="text" id="descripcion-gasto" name="descripcion-gasto" required>
+                    </div>
+
+                    <button type="submit" class="cta-btn">Registrar Gasto</button>
+                </form>
+            </section>
     </main>
+
+    <!-- Modal para confirmar acciones -->
+    <div id="modal-confirmacion" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Confirmación</h2>
+            <p id="mensaje-modal">La acción ha sido realizada con éxito.</p>
+            <button id="cerrar-modal-btn">Aceptar</button>
+        </div>
+    </div>
 
     <script src="portal.js"></script>
 </body>

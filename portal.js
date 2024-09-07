@@ -5,10 +5,12 @@ const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 if (usuarioActivo) {
     const deudaUsuario = parseFloat(usuarioActivo.deuda);
     const gananciasUsuario = parseFloat(usuarioActivo.ganancias);
-    document.getElementById('nombre-usuario').textContent = usuarioActivo.nombre; // Muestra el nombre del usuario
+    const gastosUsuario = parseFloat(usuarioActivo.gastos || 0);  // Añadir gastos
 
+    document.getElementById('nombre-usuario').textContent = usuarioActivo.nombre;
     document.getElementById('deuda-usuario').textContent = deudaUsuario.toFixed(2);
     document.getElementById('ganancias-usuario').textContent = gananciasUsuario.toFixed(2);
+    document.getElementById('gastos-usuario').textContent = gastosUsuario.toFixed(2);
 
     // Mostrar advertencia si la deuda es mayor que las ganancias
     if (deudaUsuario > gananciasUsuario) {
@@ -22,36 +24,58 @@ if (usuarioActivo) {
 
 // Manejar facturación con validaciones
 const facturaForm = document.getElementById('form-factura');
-const facturasTable = document.getElementById('facturas-table').getElementsByTagName('tbody')[0];
-let facturaId = 1;
+let facturas = JSON.parse(localStorage.getItem('facturas')) || [];
+let facturaId = facturas.length + 1;
 
 facturaForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const cliente = document.getElementById('cliente').value;
-    const total = document.getElementById('total').value;
+    const cliente = document.getElementById('nombre-cliente').value;
+    const montoFactura = parseFloat(document.getElementById('monto-factura').value);
     const fechaFactura = document.getElementById('fecha-factura').value;
 
-    const advertenciaDeudaVisible = document.getElementById('advertencia-deuda').style.display === 'block';
+    if (cliente && montoFactura > 0) {
+        // Crear objeto de factura
+        const nuevaFactura = {
+            id: facturaId,
+            cliente: cliente,
+            total: montoFactura.toFixed(2),
+            fecha: fechaFactura
+        };
 
-    if (advertenciaDeudaVisible) {
-        alert('No puedes generar una factura mientras tu deuda sea mayor que tus ganancias.');
-        return; // No permitir la generación de la factura
-    }
+        // Guardar factura en localStorage
+        facturas.push(nuevaFactura);
+        localStorage.setItem('facturas', JSON.stringify(facturas));
 
-    if (cliente && total && parseFloat(total) > 0) {
-        const newRow = facturasTable.insertRow();
-        newRow.innerHTML = `
-            <td>Factura ${facturaId}</td>
-            <td>${cliente}</td>
-            <td>${total}</td>
-            <td>${fechaFactura}</td>
-            <td><button onclick="exportarPDF(${facturaId}, '${cliente}', '${total}', '${fechaFactura}')">Exportar a PDF</button></td>
-        `;
-        facturaId++;
-        facturaForm.reset();
+        // Redirigir a la página de facturas
+        window.location.href = 'facturas.html';
     } else {
         alert('Por favor, ingrese un cliente válido y un monto mayor a 0.');
+    }
+});
+
+// Manejar registro de gastos
+const gastoForm = document.getElementById('form-gasto');
+gastoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const montoGasto = parseFloat(document.getElementById('monto-gasto').value);
+    const descripcionGasto = document.getElementById('descripcion-gasto').value;
+
+    if (montoGasto > 0 && descripcionGasto) {
+        let gastosTotales = parseFloat(usuarioActivo.gastos || 0);
+        gastosTotales += montoGasto;
+        usuarioActivo.gastos = gastosTotales;
+
+        // Actualizar en la interfaz
+        document.getElementById('gastos-usuario').textContent = gastosTotales.toFixed(2);
+
+        // Guardar en localStorage
+        localStorage.setItem('usuarioActivo', JSON.stringify(usuarioActivo));
+
+        gastoForm.reset();
+        mostrarModal('El gasto ha sido registrado con éxito.');
+    } else {
+        alert('Por favor, ingrese un monto válido y una descripción.');
     }
 });
 
