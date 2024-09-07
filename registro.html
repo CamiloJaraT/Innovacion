@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - PYME Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <nav>
+            <div class="logo">PYME Manager</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Registro -->
+    <section class="portal-container">
+        <div class="portal-content">
+            <h2>Crear una Cuenta</h2>
+            <form id="register-form">
+                <label for="register-nombre">Nombre Completo:</label>
+                <input type="text" id="register-nombre" name="nombre" required>
+
+                <label for="register-email">Correo Electrónico:</label>
+                <input type="email" id="register-email" name="email" required>
+
+                <label for="register-password">Contraseña:</label>
+                <input type="password" id="register-password" name="password" required>
+
+                <button type="submit" class="cta-btn">Registrarse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2024 PYME Manager. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Agrega el archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

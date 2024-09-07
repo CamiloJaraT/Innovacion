@@ -100,3 +100,42 @@ window.addEventListener("load", function() {
         window.location.href = "index.html";
     }
 });
+
+// Manejar el registro de usuarios
+const registerForm = document.getElementById("register-form");
+
+if (registerForm) {
+    registerForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Previene el envío del formulario
+
+        const nombre = document.getElementById("register-nombre").value;
+        const email = document.getElementById("register-email").value;
+        const password = document.getElementById("register-password").value;
+
+        // Obtener los usuarios existentes del localStorage
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        // Verificar si el correo ya está registrado
+        const usuarioExistente = usuarios.find(user => user.email === email);
+
+        if (usuarioExistente) {
+            alert("Este correo ya está registrado. Por favor, inicia sesión.");
+        } else {
+            // Crear el nuevo usuario y añadirlo al array de usuarios
+            const nuevoUsuario = { nombre, email, password, deuda: 0, ganancias: 0 };
+            usuarios.push(nuevoUsuario);
+
+            // Guardar los usuarios actualizados en localStorage
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+            // Guardar el usuario activo
+            localStorage.setItem('usuarioActivo', JSON.stringify(nuevoUsuario));
+
+            // Mostrar un mensaje de éxito
+            alert("Registro exitoso. Serás redirigido al portal.");
+
+            // Redirigir al portal
+            window.location.href = "portal.html";
+        }
+    });
+}
