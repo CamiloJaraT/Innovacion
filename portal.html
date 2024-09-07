@@ -24,13 +24,30 @@
             <div class="financial-data">
                 <div class="financial-card">
                     <h2>Deuda Total</h2>
-                    <p class="amount" id="deuda-usuario"></p>
+                    <p class="amount red" id="deuda-usuario">$0.00</p>
                 </div>
                 <div class="financial-card">
                     <h2>Ganancias Totales</h2>
-                    <p class="amount" id="ganancias-usuario"></p>
+                    <p class="amount green" id="ganancias-usuario">$0.00</p>
                 </div>
             </div>
+
+            <!-- Nueva sección: Generar Facturas -->
+            <section class="factura-container">
+                <h2>Generar Factura</h2>
+                <form id="form-factura">
+                    <label for="nombre-cliente">Nombre del Cliente:</label>
+                    <input type="text" id="nombre-cliente" name="nombre-cliente" required>
+
+                    <label for="monto-factura">Monto de la Factura:</label>
+                    <input type="number" id="monto-factura" name="monto-factura" required>
+
+                    <label for="fecha-factura">Fecha de la Factura:</label>
+                    <input type="date" id="fecha-factura" name="fecha-factura" required>
+
+                    <button type="submit" class="cta-btn">Generar Factura</button>
+                </form>
+            </section>
         </section>
     </main>
 

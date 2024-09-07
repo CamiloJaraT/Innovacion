@@ -3,65 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de PYMEs</title>
+    <title>Inicio - PYME Manager</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Encabezado -->
     <header>
         <nav>
             <div class="logo">PYME Manager</div>
             <ul class="nav-links">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Sección Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Optimiza y Crece con Nosotros</h1>
-            <p>Centraliza la gestión de tu empresa en una sola plataforma. Automatiza procesos y agiliza el crecimiento de tu PYME.</p>
-            <a href="#" class="cta-btn" id="comenzar-btn">Comenzar Ahora</a>
+        <div>
+            <h1>Bienvenido a PYME Manager</h1>
+            <p>La mejor solución para la gestión de pequeñas y medianas empresas</p>
+            <a href="servicios.html" class="cta-btn">Descubre nuestros servicios</a>
         </div>
     </section>
 
+    <!-- Sección de Funcionalidades -->
     <section class="features">
-        <h2>Funcionalidades Principales</h2>
+        <h2>Nuestras Funcionalidades</h2>
         <div class="feature-cards">
             <div class="card">
                 <h3>Gestión de Inventarios</h3>
-                <p>Controla y organiza tu inventario de forma eficiente.</p>
+                <p>Optimiza la administración de tu inventario con nuestras herramientas automatizadas.</p>
             </div>
             <div class="card">
                 <h3>Facturación Electrónica</h3>
-                <p>Genera y gestiona facturas de manera automática.</p>
+                <p>Genera y controla tus facturas electrónicas de manera fácil y rápida.</p>
             </div>
             <div class="card">
-                <h3>Seguimiento de Ventas</h3>
-                <p>Monitoriza y analiza el rendimiento de tus ventas en tiempo real.</p>
+                <h3>Monitoreo de Ventas</h3>
+                <p>Obtén reportes en tiempo real sobre las ventas de tu negocio y analiza su crecimiento.</p>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Registro/Iniciar Sesión -->
-    <div id="registro-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="login-form">
+    <!-- Sección de Inicio de Sesión -->
+    <section class="portal-container">
+        <div class="portal-content">
+            <h2>Inicia Sesión en tu Cuenta</h2>
+            <form action="portal.html" method="POST">
                 <label for="email">Correo Electrónico:</label>
-                <input type="email" id="login-email" name="email" required>
+                <input type="email" id="email" name="email" required>
 
                 <label for="password">Contraseña:</label>
-                <input type="password" id="login-password" name="password" required>
+                <input type="password" id="password" name="password" required>
 
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit" class="cta-btn">Iniciar Sesión</button>
             </form>
         </div>
-    </div>
+    </section>
 
+    <!-- Pie de Página -->
     <footer>
         <p>&copy; 2024 PYME Manager. Todos los derechos reservados.</p>
         <div class="social-media">
@@ -70,8 +73,5 @@
             <a href="#">LinkedIn</a>
         </div>
     </footer>
-
-    <!-- Agregar el script.js -->
-    <script src="script.js"></script>
 </body>
 </html>

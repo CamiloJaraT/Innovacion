@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
 /* Reset de márgenes y padding */
 * {
     margin: 0;
@@ -7,17 +9,29 @@
 
 /* Estilos del cuerpo */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Animación General */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Encabezado */
 header {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.9); /* Transparencia aplicada */
     padding: 1.5rem 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 nav {
@@ -32,6 +46,7 @@ nav {
     font-size: 1.8rem;
     font-weight: bold;
     color: #fff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .nav-links {
@@ -53,7 +68,7 @@ nav {
 }
 
 .nav-links a:hover {
-    background-color: #555;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Sección Hero */
@@ -66,10 +81,13 @@ nav {
     text-align: center;
     color: #fff;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
 }
 
 .hero h1 {
     font-size: 4rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 1.5rem;
     animation: fadeInDown 1s ease-out;
 }
@@ -87,15 +105,17 @@ nav {
     color: #fff;
     padding: 0.75rem 2rem;
     font-size: 1.3rem;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .cta-btn:hover {
     background-color: #e65a50;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
 }
 
 /* Animación para la sección Hero */
@@ -113,7 +133,7 @@ nav {
 /* Sección de Funcionalidades */
 .features {
     padding: 4rem 1rem;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparencia aplicada */
     text-align: center;
 }
 
@@ -122,6 +142,7 @@ nav {
     margin-bottom: 3rem;
     color: #333;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .feature-cards {
@@ -132,7 +153,7 @@ nav {
 }
 
 .card {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 2rem;
     border-radius: 15px;
     width: 30%;
@@ -155,6 +176,68 @@ nav {
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Portal */
+.portal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.portal-content {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portal-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de datos financieros */
+.financial-data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.financial-card {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 48%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.amount.green {
+    color: #27ae60;
+}
+
+.amount.red {
+    color: #e74c3c;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
 /* Modal */
@@ -210,6 +293,7 @@ nav {
 .modal-content h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .modal-content input {
@@ -225,6 +309,7 @@ nav {
     width: 100%;
     padding: 0.75rem;
     font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
     background-color: #ff6f61;
     color: #fff;
     border: none;
@@ -237,125 +322,166 @@ nav {
     background-color: #e65a50;
 }
 
-/* Sección del portal */
-/* Contenedor del portal */
-.portal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 2rem;
-    background-color: #f4f4f4;
-}
-
-/* Contenido del portal */
-.portal-content {
-    background-color: #fff;
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    max-width: 800px; /* Ajuste para que las tarjetas tengan más espacio */
-    width: 100%;
-}
-
-/* Estilo del título */
-.portal-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-}
-
-/* Contenedor de datos financieros */
-.financial-data {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Permite que las tarjetas se adapten en pantallas pequeñas */
-    gap: 2rem; /* Espacio entre las tarjetas */
-}
-
-/* Tarjetas de datos financieros */
-.financial-card {
-    background-color: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 10px;
-    width: calc(50% - 1rem); /* Ajuste para que las tarjetas se alineen y tengan buen espacio */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.financial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Título de cada tarjeta */
-.financial-card h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-/* Estilo de los valores (deuda y ganancias) */
-.amount {
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-/* Clases para cambiar el color de los valores */
-.amount.green {
-    color: #27ae60; /* Verde si las ganancias son mayores */
-}
-
-.amount.red {
-    color: #e74c3c; /* Rojo si la deuda es mayor */
-}
-
-/* Estilo para la advertencia */
-.warning {
-    color: red;
-    font-weight: bold;
-    margin-top: 1rem;
-}
-
-/* Estilo del botón de cerrar sesión */
-.logout-btn {
-    background-color: #c0392b;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.logout-btn:hover {
-    background-color: #e74c3c;
-}
-
 /* Pie de página */
 footer {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.9);
     color: #fff;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1.03rem 0;
     position: absolute;
     width: 100%;
     bottom: 0;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .social-media {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .social-media a {
     color: #fff;
     margin: 0 1rem;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
 }
 
 .social-media a:hover {
     text-decoration: underline;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+/* Sección de Inicio de Sesión */
+.portal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.portal-content {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portal-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.portal-content h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.portal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.portal-content label {
+    font-size: 1.1rem;
+    color: #333;
+    text-align: left;
+}
+
+.portal-content input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efectos de focus en los campos de entrada */
+.portal-content input:focus {
+    outline: none;
+    border-color: #3498db; /* Color primario */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+/* Botón de enviar con efectos */
+.portal-content button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en el botón de enviar */
+.portal-content button:hover {
+    background-color: #e65a50;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pie de página */
+footer {
+    background-color: rgba(51, 51, 51, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 1.03rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    animation: fadeIn 2s ease-in-out;
+}
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.services-list li {
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #f4f4f4;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.portal-content {
+    text-align: left;
+}
+
+.portal-content h3 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #333;
+}
+
+.portal-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+}
+
+.portal-content h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
