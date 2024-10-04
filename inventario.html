@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario - PYME Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PYME Manager - Inventario</div>
+            <ul class="nav-links">
+                <li><a href="portal.html">Portal</a></li>
+                <li><a href="index.html" class="logout-btn">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="inventario-container">
+        <section class="inventario-content">
+            <h1>Gestión de Inventario</h1>
+
+            <!-- Sección de resumen de inventario -->
+            <section class="inventory-summary">
+                <div class="inventory-data">
+                    <div class="inventory-card">
+                        <h2>Total de Productos</h2>
+                        <p class="amount" id="total-productos">0</p>
+                    </div>
+                    <div class="inventory-card">
+                        <h2>Valor del Inventario</h2>
+                        <p class="amount" id="valor-inventario">$0.00</p>
+                    </div>
+                    <div class="inventory-card">
+                        <h2>Productos Bajos en Stock</h2>
+                        <p class="amount" id="productos-bajos">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de agregar producto -->
+            <section class="agregar-producto-container">
+                <h2>Agregar Nuevo Producto</h2>
+                <form id="form-producto">
+                    <div class="form-group">
+                        <label for="nombre-producto">Nombre del Producto:</label>
+                        <input type="text" id="nombre-producto" name="nombre-producto" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cantidad-producto">Cantidad:</label>
+                        <input type="number" id="cantidad-producto" name="cantidad-producto" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="precio-producto">Precio Unitario:</label>
+                        <input type="number" id="precio-producto" name="precio-producto" step="0.01" required>
+                    </div>
+
+                    <button type="submit" class="cta-btn">Agregar Producto</button>
+                </form>
+            </section>
+
+            <!-- Tabla de inventario -->
+            <section class="inventario-lista">
+                <h2>Lista de Inventario</h2>
+                <table id="inventario-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Valor Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los productos del inventario -->
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+
+    <!-- Modal para editar producto -->
+    <div id="modal-editar-producto" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Editar Producto</h2>
+            <form id="form-editar-producto">
+                <div class="form-group">
+                    <label for="editar-nombre-producto">Nombre del Producto:</label>
+                    <input type="text" id="editar-nombre-producto" name="editar-nombre-producto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editar-cantidad-producto">Cantidad:</label>
+                    <input type="number" id="editar-cantidad-producto" name="editar-cantidad-producto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editar-precio-producto">Precio Unitario:</label>
+                    <input type="number" id="editar-precio-producto" name="editar-precio-producto" step="0.01" required>
+                </div>
+
+                <button type="submit" class="cta-btn">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div id="modal-eliminar-producto" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>¿Estás seguro?</h2>
+            <p>¿Deseas eliminar este producto del inventario?</p>
+            <button id="confirmar-eliminar-producto-btn" class="cta-btn">Eliminar</button>
+            <button id="cancelar-eliminar-producto-btn" class="cta-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="inventario.js"></script>
+</body>
+</html>
