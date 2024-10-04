@@ -64,6 +64,23 @@
 
                     <button type="submit" class="cta-btn">Generar Factura</button>
                 </form>
+
+                <!-- Tabla de facturas -->
+                <h2>Lista de Facturas</h2>
+                <table id="facturas-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán las facturas generadas -->
+                    </tbody>
+                </table>
             </section>
 
             <!-- Sección de registro de gastos -->
@@ -82,17 +99,42 @@
 
                     <button type="submit" class="cta-btn">Registrar Gasto</button>
                 </form>
-            </section>
 
+                <!-- Tabla de gastos -->
+                <h2>Lista de Gastos</h2>
+                <table id="gastos-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los gastos registrados -->
+                    </tbody>
+                </table>
+            </section>
     </main>
 
     <!-- Modal para confirmar acciones -->
-    <div id="modal-confirmacion" class="modal">
+    <div id="modal-confirmacion" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>Confirmación</h2>
             <p id="mensaje-modal">La acción ha sido realizada con éxito.</p>
             <button id="cerrar-modal-btn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal para confirmación de eliminación -->
+    <div id="modal-eliminar" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>¿Estás seguro?</h2>
+            <p>¿Deseas eliminar este ítem?</p>
+            <button id="confirmar-eliminar-btn" class="cta-btn">Eliminar</button>
+            <button id="cancelar-eliminar-btn" class="cta-btn">Cancelar</button>
         </div>
     </div>
 
